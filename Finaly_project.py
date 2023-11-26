@@ -73,8 +73,8 @@ class Strana:
         self.humans=[]
         for i in range(1,self.count+1):
             self.time_obj=Human(money=random.randint(50,100), happy=random.randint(50,100), health=random.randint(50,100),
-                                strength=random.randint(50,100),nationaliti=self.nation, name=names[random.randint(0,4)]+" "+
-                                                                                              surnames[random.randint(0,4)])
+                                strength=random.randint(50,100),nationaliti=self.nation,
+                                name=names[random.randint(0, len(names)-1)]+" "+surnames[random.randint(0, len(surnames)-1)])
             self.humans.append(self.time_obj)
             print(self.time_obj)
 
