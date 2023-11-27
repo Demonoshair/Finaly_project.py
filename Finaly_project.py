@@ -1,4 +1,5 @@
 import random
+import time
 
 names=["Jotaro", "Vasya", "Oguzok", "Vlad", "Jozeph"]
 surnames=["Pupkin", "Ogriziv", "Klichko", "Petuhov", "Kujo"]
@@ -11,7 +12,6 @@ class Human:                    #Класс человека
         self.strength=strength
         self.live=True
         self.random_cube=0
-        self.car=None
         self.nationaliti=nationaliti
         self.name=name
     def __str__(self):
@@ -78,4 +78,10 @@ class Strana:
             self.humans.append(self.time_obj)
             print(self.time_obj)
 
-ogriziya=Strana(nation="ogriziya", count=10)
+class Planet:
+    def __init__(self):
+        ogriziya = Strana(nation="Ogriziya", count=10)
+        oguziya = Strana(nation="Oguziya", count=10)
+        italiya = Strana(nation="Italiya", count=10)
+
+Tireya=Planet()
