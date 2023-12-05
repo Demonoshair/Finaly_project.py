@@ -5,8 +5,10 @@ names=["Jotaro", "Vasya", "Oguzok", "Vlad", "Jozeph"]
 surnames=["Pupkin", "Ogriziv", "Klichko", "Petuhov", "Kujo"]
 
 class Human:                    #Класс человека
-    def __init__(self, health, happy, strength, money, nationaliti=None, name=None):
+    def __init__(self, health, happy, strength, money, money_bust, kul, nationaliti=None, name=None):
         self.money=money
+        self.money_bust=money_bust
+        self.kul=kul
         self.health=health
         self.happy=happy
         self.strength=strength
@@ -66,22 +68,27 @@ class Human:                    #Класс человека
             self.health=+10
 
 class Strana:
-    def __init__(self, nation, count):
+    def __init__(self, nation, count, money_bust, kul):
         self.nation=nation
+        self.money_bust=money_bust
         self.count=count
+        self.kul=kul
         self.time_obj=None
         self.humans=[]
         for i in range(1,self.count+1):
             self.time_obj=Human(money=random.randint(50,100), happy=random.randint(50,100), health=random.randint(50,100),
                                 strength=random.randint(50,100),nationaliti=self.nation,
-                                name=names[random.randint(0, len(names)-1)]+" "+surnames[random.randint(0, len(surnames)-1)])
+                                name=names[random.randint(0, len(names)-1)]+" "+surnames[random.randint(0, len(surnames)-1)],
+                                kul=self.kul, money_bust=self.money_bust)
             self.humans.append(self.time_obj)
             print(self.time_obj)
 
 class Planet:
     def __init__(self):
-        ogriziya = Strana(nation="Ogriziya", count=10)
-        oguziya = Strana(nation="Oguziya", count=10)
-        italiya = Strana(nation="Italiya", count=10)
+        ogriziya = Strana(nation="Ogriziya", count=10, money_bust=20, kul=10)
+        oguziya = Strana(nation="Oguziya", count=20, money_bust=10, kul=10)
+        italiya = Strana(nation="Italiya", count=10, money_bust=10, kul=20)
 
 Tireya=Planet()
+
+time.sleep(100)
