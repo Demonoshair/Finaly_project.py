@@ -43,19 +43,19 @@ class Human:                    #Класс человека
     def walk(self):
         self.random_cube=random.randint(1,3)
         if self.random_cube==1:
-            self.happy=+self.kul         #Человек пошёл в парк
+            self.happy=+20         #Человек пошёл в парк
         elif self.random_cube==2:
             if self.money>20:
-                self.happy=+self.kul+10         #Человек пошёл в ресторан
+                self.happy=+30         #Человек пошёл в ресторан
                 self.money=-10
             else:
                 self.happy=+20        #Человек пошёл в парк из-за недостатка денег
-        elif self.random_cube==3:       #Человек пошёл в качалку
+        elif self.random_cube==3:
             self.health=+20
             self.strength=+10
     def work(self):
         self.happy=-20    #Человек пошёл на работу
-        self.money=+self.money_bust+20+random.randint(-10,10)
+        self.money=+40
     def home(self):
         self.random_cube=random.randint(1,3)
         if self.random_cube==1:
@@ -82,10 +82,11 @@ class Strana:
                                 kul=self.kul, money_bust=self.money_bust)
             self.humans.append(self.time_obj)
             print(self.time_obj)
+
     def day(self):
-        for i in range(0, len(self.humans)-1):
-            self.time_obj=self.humans(i)
-            self.time_obj.live
+        for i in range(0, len(self.humans)):
+            self.humans(i).live
+
 
 class Planet:
     def __init__(self):
