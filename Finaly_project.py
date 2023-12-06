@@ -89,12 +89,30 @@ class Strana:
             print(self.time_obj)
 
     def day(self):
+        self.god_of_random=random.randint(1,4)
         self.colvo = self.count
+        self.mod_health=0
+        self.mod_happy=0
+        if self.god_of_random==1:
+            self.sasuha()
+        elif self.god_of_random==2:
+            self.meteorit()
         for i in range(0, len(self.humans)):
             self.humans[i].live()
             if self.humans[i].alive==False:
                 self.colvo-=1
+            else:
+                self.humans[i].health+=self.mod_health
         print(f"\nКол в людей в государстве {self.nation}: {self.colvo}")
+
+    def sasuha(self):
+        print(f"\nВ государстве {self.nation} началась засуха! Жители голодают, -20 здоровья")
+        self.mod_health=-20
+    def meteorit(self):
+        print(f"\nВ государстве {self.nation} упал метеор! жители напуганы и недовольны, -10 счастья")
+        self.mod_happy=-10
+
+
 
 
 
@@ -105,17 +123,18 @@ class Planet:
         self.oguziya = Strana(nation="Oguziya", count=20, money_bust=10, kul=10)
         self.italiya = Strana(nation="Italiya", count=10, money_bust=10, kul=20)
 
-    def WORLD(self):
+    def WORLD(self):   #Извините за нарушение РЕР8, но эта функция самая важная, и чтобы показать ее значимость я увеличил буквы
         while True:
-            print(f"День {self.day}")
+            self.den=f"День {self.day}"
+            print(f"{self.den:=^40}")
             self.oguziya.day()
             self.ogriziya.day()
             self.italiya.day()
             self.day+=1
-            time.sleep(0.3)
+            print("\n")
+            time.sleep(0.5)
 
 Tireya=Planet()
 Tireya.WORLD()
 
 time.sleep(100)
-
