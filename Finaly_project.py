@@ -89,7 +89,7 @@ class Strana:
             print(self.time_obj)
 
     def day(self):
-        self.god_of_random=random.randint(1,4)
+        self.god_of_random=random.randint(1,20)
         self.colvo = self.count
         self.mod_health=0
         self.mod_happy=0
@@ -97,13 +97,15 @@ class Strana:
             self.sasuha()
         elif self.god_of_random==2:
             self.meteorit()
+        elif self.god_of_random==3:
+            self.muzh()
         for i in range(0, len(self.humans)):
             self.humans[i].live()
             if self.humans[i].alive==False:
                 self.colvo-=1
             else:
                 self.humans[i].health+=self.mod_health
-        print(f"\nКол в людей в государстве {self.nation}: {self.colvo}")
+        print(f"\nКол во людей в государстве {self.nation}: {self.colvo}")
 
     def sasuha(self):
         print(f"\nВ государстве {self.nation} началась засуха! Жители голодают, -20 здоровья")
@@ -111,6 +113,10 @@ class Strana:
     def meteorit(self):
         print(f"\nВ государстве {self.nation} упал метеор! жители напуганы и недовольны, -10 счастья")
         self.mod_happy=-10
+    def muzh(self):
+        print(f"\nВ государстве {self.nation} начался... ЭЙ! отдайте микро... АЛИЛУУЯ ЭТО ДОЖДЬ ИЗ МУЖИКОООВ\n"
+              f"+20 счастье")
+        self.mod_happy=20
 
 
 
@@ -120,10 +126,11 @@ class Planet:
     def __init__(self):
         self.day = 1
         self.ogriziya = Strana(nation="Ogriziya", count=10, money_bust=20, kul=10)
-        self.oguziya = Strana(nation="Oguziya", count=20, money_bust=10, kul=10)
+        self.oguziya = Strana(nation="Oguziya", count=15, money_bust=10, kul=10)
         self.italiya = Strana(nation="Italiya", count=10, money_bust=10, kul=20)
 
-    def WORLD(self):   #Извините за нарушение РЕР8, но эта функция самая важная, и чтобы показать ее значимость я увеличил буквы
+# Извините за нарушение РЕР8, но эта функция самая важная, и чтобы показать ее значимость я увеличил буквы
+    def WORLD(self):
         while True:
             self.den=f"День {self.day}"
             print(f"{self.den:=^40}")
@@ -133,6 +140,31 @@ class Planet:
             self.day+=1
             print("\n")
             time.sleep(0.5)
+    def war(self, a, b):
+        self.i = 1
+        while True:
+            self.numone=a.humans[random.randint(1, len(a.humans))]-1
+            if self.numone.alive==True:
+                self.one = self.numone.strength
+                while True:
+                    self.numtwo = b.humans[random.randint(1, len(a.humans))]
+                    if self.numtwo.alive==True:
+                        self.two = self.numtwo.strength
+                        if self.two>self.one:
+                            print(f"{self.numone.name} Мёртв")
+                            self.numone.alive=False
+                        elif self.two<self.one:
+                            print(f"{self.numtwo.name} Мёртв")
+                            self.numtwo.alive=False
+                        else:
+                            print(f"{self.numtwo.name} и {self.numone.name} Мертвы")
+                            self.numone.alive = False
+                            self.numtwo.alive = False
+            self.i+=1
+            if self.i==200:
+                return False
+
+
 
 Tireya=Planet()
 Tireya.WORLD()
