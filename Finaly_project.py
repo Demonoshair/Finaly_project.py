@@ -89,7 +89,7 @@ class Strana:
             print(self.time_obj)
 
     def day(self):
-        self.god_of_random=random.randint(1,4)
+        self.god_of_random=random.randint(1,12)
         self.colvo = self.count
         self.mod_health=0
         self.mod_happy=0
@@ -139,7 +139,7 @@ class Planet:
             self.italiya.day()
             self.day+=1
             print("\n")
-            time.sleep(1)
+            input("нажмите enter для следующего дня!")
 
 
 
