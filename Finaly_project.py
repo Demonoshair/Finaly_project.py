@@ -89,7 +89,7 @@ class Strana:
             print(self.time_obj)
 
     def day(self):
-        self.god_of_random=random.randint(1,20)
+        self.god_of_random=random.randint(1,4)
         self.colvo = self.count
         self.mod_health=0
         self.mod_happy=0
@@ -139,30 +139,7 @@ class Planet:
             self.italiya.day()
             self.day+=1
             print("\n")
-            time.sleep(0.5)
-    def war(self, a, b):
-        self.i = 1
-        while True:
-            self.numone=a.humans[random.randint(1, len(a.humans))]-1
-            if self.numone.alive==True:
-                self.one = self.numone.strength
-                while True:
-                    self.numtwo = b.humans[random.randint(1, len(a.humans))]
-                    if self.numtwo.alive==True:
-                        self.two = self.numtwo.strength
-                        if self.two>self.one:
-                            print(f"{self.numone.name} Мёртв")
-                            self.numone.alive=False
-                        elif self.two<self.one:
-                            print(f"{self.numtwo.name} Мёртв")
-                            self.numtwo.alive=False
-                        else:
-                            print(f"{self.numtwo.name} и {self.numone.name} Мертвы")
-                            self.numone.alive = False
-                            self.numtwo.alive = False
-            self.i+=1
-            if self.i==200:
-                return False
+            time.sleep(1)
 
 
 
